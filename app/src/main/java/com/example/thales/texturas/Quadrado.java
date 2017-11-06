@@ -8,7 +8,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Quadrado extends Triangulo{
 
-    private float coordenadas[] = {0, 0, 0, lado, lado, 0, lado, lado};
+    private float coordenadas[] = {0,0, 0, 151, 232, 0 , 232, 151};
+    //private float coordenadas[] = {0, 0, 0, lado, lado, 0, lado, lado};
 
     public Quadrado() {
         setCoordenadas(coordenadas);

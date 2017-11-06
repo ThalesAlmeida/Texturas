@@ -30,6 +30,7 @@ class Renderizador implements GLSurfaceView.Renderer
     Activity vrActivity;
     int id;
     Quadrado quadrado = null;
+    int quadro = 1;
 
 
     public Renderizador (Activity vrActivity){
@@ -51,6 +52,9 @@ class Renderizador implements GLSurfaceView.Renderer
     @Override
     //Vai ser chamada quando a superficie mudar
     public void onSurfaceChanged(GL10 vrOpenGL, int largura, int altura) {
+
+
+
         PosLargura=largura;
         PosAltura=altura;
 
@@ -113,6 +117,122 @@ class Renderizador implements GLSurfaceView.Renderer
     //ele que vai ser chamado.
     public void onDrawFrame(GL10 vrOpengl) {
 
+        float coordenadas[] = null;
+
+        switch (quadro){
+            case 1:
+                float[] verticeQuadro1 = {0,1,
+                0,0,
+                0.09f, 1,
+                0.09f, 0};
+                coordenadas = verticeQuadro1;
+                quadro = 2;
+                break;
+
+            case 2:
+                float[] verticeQuadro2 = {0.09f, 1,
+                0.09f, 0,
+                0.18f, 1,
+                0.18f, 0};
+                coordenadas = verticeQuadro2;
+                quadro = 3;
+                break;
+
+            case 3:
+                float[] verticeQuadro3 = {0.18f, 1,
+                0.18f, 0,
+                0.27f, 1,
+                0.27f, 0};
+                coordenadas =  verticeQuadro3;
+                quadro = 4;
+                break;
+
+            case 4:
+                float[] verticeQuadro4 = {0.27f, 1,
+                0.27f, 0,
+                0.36f, 1,
+                0.36f, 0};
+                coordenadas = verticeQuadro4;
+                quadro = 5;
+                break;
+
+            case 5:
+                float[] verticeQuadro5 = {0.36f, 1,
+                0.36f, 0,
+                0.45f, 1,
+                0.45f, 0};
+                coordenadas = verticeQuadro5;
+                quadro = 6;
+                break;
+
+            case 6:
+                float[] verticeQuadro6 = {0.45f, 1,
+                0.45f, 0,
+                0.54f, 1,
+                0.54f, 0};
+                coordenadas = verticeQuadro6;
+                quadro = 7;
+                break;
+
+            case 7:
+                float[] verticeQuadro7 = {0.54f, 1,
+                        0.54f, 0,
+                        0.63f, 1,
+                        0.63f, 0};
+                coordenadas = verticeQuadro7;
+                quadro = 8;
+                break;
+
+            case 8:
+                float[] verticeQuadro8 = {0.63f, 1,
+                        0.63f, 0,
+                        0.72f, 1,
+                        0.72f, 0};
+                coordenadas = verticeQuadro8;
+                quadro = 9;
+                break;
+
+            case 9:
+                float[] verticeQuadro9 = {0.72f, 1,
+                        0.72f, 0,
+                        0.81f, 1,
+                        0.81f, 0};
+                coordenadas = verticeQuadro9;
+                quadro = 10;
+                break;
+
+            case 10:
+                float[] verticeQuadro10 = {0.81f, 1,
+                        0.81f, 0,
+                        0.90f, 1,
+                        0.90f, 0};
+                coordenadas = verticeQuadro10;
+                quadro = 11;
+                break;
+
+            case 11:
+                float[] verticeQuadro11 = {0.90f, 1,
+                        0.90f, 0,
+                        0.1f, 1,
+                        0.1f, 0};
+                coordenadas = verticeQuadro11;
+                quadro = 1;
+                break;
+        }
+
+
+        //float[] vetQuadrado={0, 0, 0, lado, lado, lado, lado, 0};
+
+        //float[] vetCoordenadas= {0,1, 0,0 , 1,1, 1,0};
+
+        FloatBuffer vetTexturas = VertexBuffer.generateNioBuffer(coordenadas);
+
+        vrOpengl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, vetTexturas);
+
+        id = carregaTextura(R.mipmap.animationstrip, vrOpengl);
+
+
+        //FloatBuffer vetTextures = CriaBuffer(coordenadas);
 
 
         vrOpengl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -140,7 +260,7 @@ class Renderizador implements GLSurfaceView.Renderer
         // vrOpengl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
 
 
-        angulo++;
+        //angulo++;
 
     }
 
